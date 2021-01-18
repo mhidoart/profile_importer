@@ -1,0 +1,26 @@
+CREATE table interviewer(
+id int primary key AUTO_INCREMENT,
+    complete_name varchar(40),
+    email varchar(50),
+    pass varchar (38),
+    rank int
+    
+)
+
+create table profile_cv(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    first_name varchar(20),
+    last_name varchar(20),
+    email varchar(50),
+    cv_path text,
+    comment text,
+    intern_or_job int, 
+    avis int
+    
+)
+
+CREATE TABLE suivi_profile(
+id int PRIMARY key AUTO_INCREMENT,
+id_user int ,
+id_profile int,
+date_operation date)

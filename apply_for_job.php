@@ -16,8 +16,8 @@
     <div class="container contact">
         <div class="row">
             <div class="col-md-3">
-                <div class="contact-info">
-                    <img src="static/pics/logo.png" width="200" alt="image" />
+                <div class="contact-info" style="text-align: center;">
+                    <img src="static/pics/logo.png" width="150" alt="image" />
                     <h2>Apply for the job Now!</h2>
                     <h4>You may be one of our <b>Experts</b>!</h4>
                 </div>

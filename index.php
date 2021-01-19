@@ -12,6 +12,18 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/styles.css">
+    <script>
+        $(document).ready(function() {
+            console.log("ready!");
+            $('#apply_for_internship').click(function() {
+                window.location.href = 'internship.php';
+            })
+            $('#apply_for_job').click(function() {
+                window.location.href = 'apply_for_job.php';
+            })
+
+        });
+    </script>
 </head>
 
 <body>
@@ -22,7 +34,8 @@
 
 
             <div class="row">
-                <div class="col-lg-4 col-xs-12  text-center">
+
+                <div class="col-lg-4 col-xs-12  text-center" id="apply_for_internship">
                     <div class="box">
                         <img src="static/pics/internship_logo.png" alt="">
                         <div class="box-title">
@@ -38,7 +51,7 @@
                 </div>
 
 
-                <div class="col-lg-4 col-xs-12 text-center">
+                <div class="col-lg-4 col-xs-12 text-center" id="apply_for_job">
                     <div class="box">
                         <img src="static/pics/businessman.png" alt="">
                         <div class="box-title">

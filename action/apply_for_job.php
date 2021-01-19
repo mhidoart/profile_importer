@@ -38,8 +38,10 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["imageUploader"]["tmp_name"], $target_file)) {
         //echo $req;
-        echo "The file " . htmlspecialchars(basename($_FILES["imageUploader"]["name"])) . " has been uploaded.";
+        //echo "The file " . htmlspecialchars(basename($_FILES["imageUploader"]["name"])) . " has been uploaded.";
         $service->apply_for_job($fname, $lname, $num, $email, $newName, $comment);
+        header("Location: ../success_apply.php?email=" . $email);
+        exit();
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

@@ -24,3 +24,12 @@ id int PRIMARY key AUTO_INCREMENT,
 id_user int ,
 id_profile int,
 date_operation date)
+
+create table offre(
+id int PRIMARY KEY AUTO_INCREMENT,
+id_user int,
+title varchar(100),
+description text,
+date_creation date,
+document_path text
+);

@@ -16,4 +16,4 @@ function open($dataSource, $username, $password)
     return $service;
 }
 open('profile_importer', 'root', '');
-//open('assabban_tf', 'assabban_xana', '@Edf6c19a25');
+//open('assabban_main', 'assabban_xana', '@Edf6c19a25');

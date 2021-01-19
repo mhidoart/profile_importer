@@ -1,5 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+error_reporting(E_ERROR | E_PARSE);
+
+include_once './dao/Database.php';
+include_once './controller/MainController.php';
+include_once './action/BusinessFactory.php';
+
+
+
+
+$res = $service->get_offres();
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -33,7 +45,7 @@
 
 
 
-            <div class="row">
+            <div class="row" id="APPLY">
 
                 <div class="col-lg-4 col-xs-12  text-center" id="apply_for_internship">
                     <div class="box">
@@ -82,7 +94,41 @@
                 </div>
 
             </div>
+            <div class="row">
+                <hr style="color: white;">
+                <h2>Offres</h2>
+            </div>
 
+            <div class="row">
+
+                <?php for ($i = 0; $i < count($res); $i++) { ?>
+                    <div class="col-lg-4 col-xs-12  text-center">
+                        <div class="box">
+                            <div class="box-title">
+                                <h3><?= $res[$i]["title"] ?></b></h3>
+                            </div>
+                            <div class="box-text">
+                                <span><?= $res[$i]["description"] ?></span>
+                            </div>
+                            <div class="box-btn">
+                                <small> created by : <?php
+                                                        $user = $service->get_interviewer($res[$i]["id_user"]);
+                                                        echo  $user[0]["complete_name"];
+                                                        ?> on: <?= $res[$i]["date_creation"] ?></small>
+                                <br> <small> more details:<?php
+                                                            if ('no_file' == $res[$i]["document_path"]) {
+                                                                // nothing
+                                                            } else {
+                                                                echo '<a  target="_blank" rel="noopener noreferrer" href="' . "./action/uploads/offre_upploads/" . $res[$i]["document_path"] . '">download</a></td>';
+                                                            }
+                                                            ?>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+
+            </div>
         </div>
     </div>
 </body>

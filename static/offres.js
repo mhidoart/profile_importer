@@ -1,43 +1,51 @@
 baseUrl = "./action/"
-defaultType = "0" // internchips
-defaultAvis = "0" // pending
-currentProfile = -1;
+
 $(document).ready(function () {
     console.log("ready!");
-    get_ALL();
-
-    $('#typeSelector').on('change', function () {
-        console.log(this.value);
-        defaultType = this.value;
-        get_ALL();
-
-    });
-    $('#avisSelector').on('change', function () {
-        console.log(this.value);
-        defaultAvis = this.value;
-        get_ALL();
-
-    });
-    $('#modifyAvis').on('change', function () {
-        console.log(this.value);
-        update_profile(currentProfile, this.value)
-
-    });
-
-    $('#search_profiles').on('input', function () {
-        $.get(baseUrl + "search_profiles.php?keyword=" + encodeURIComponent($(this).val()) + "&type=" + encodeURIComponent(defaultType) + "&category=" + encodeURIComponent(defaultAvis), function (data) {
-            $("#result").html(data);
-            console.log("Load was performed." + data);
+    get_ALL_offres();
+    /*
+        $('#typeSelector').on('change', function () {
+            console.log(this.value);
+            defaultType = this.value;
+            get_ALL();
+    
         });
-    });
-
+        $('#avisSelector').on('change', function () {
+            console.log(this.value);
+            defaultAvis = this.value;
+            get_ALL();
+    
+        });
+        $('#modifyAvis').on('change', function () {
+            console.log(this.value);
+            update_profile(currentProfile, this.value)
+    
+        });
+    */
 });
-function get_ALL() {
-    $.get(baseUrl + "get_profiles.php?type=" + encodeURIComponent(defaultType) + "&category=" + encodeURIComponent(defaultAvis), function (data) {
-        $("#result").html(data);
+function get_ALL_offres() {
+    $.get(baseUrl + "get_offres.php", function (data) {
+        $("#offres").html(data);
         console.log("Load was performed." + data);
     });
 }
+function archive_offre(id) {
+    $.ajax({
+        type: 'GET',
+        url: baseUrl + "archive_offre.php?id=" + encodeURIComponent(id),
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            get_ALL_offres();
+
+            return data;
+        }
+    });
+}
+function modifyOffre(id) {
+    window.location = baseUrl + "modify_an_offer.php?id=" + encodeURIComponent(id);
+}
+/*
 function update_profile(id, avis) {
     $.ajax({
         type: 'GET',
@@ -86,3 +94,4 @@ function openModal(id) {
 
     $("#myModal").modal();
 }
+*/
